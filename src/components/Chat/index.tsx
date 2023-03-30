@@ -81,7 +81,7 @@ const Chat = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="flex mx-3 my-6 space-x-3 md:mx-0"
+        className="flex m-3 space-x-3 md:my-6 md:mx-0"
       >
         <input
           ref={inputRef}
