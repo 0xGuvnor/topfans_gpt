@@ -1,6 +1,6 @@
 import { AiOutlineRobot } from "react-icons/ai";
 import { HiUser } from "react-icons/hi";
-import TypingAnimation from "./TypingAnimation";
+import Timer from "./Timer";
 
 interface Props {
   role: "assistant" | "system" | "user";
@@ -18,6 +18,7 @@ const ChatBubble = ({ role, message }: Props) => {
       >
         {message}
       </p>
+      <Timer start={10} />
     </div>
   ) : (
     <div className="flex items-center justify-end gap-2 my-2">

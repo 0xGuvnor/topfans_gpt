@@ -10,6 +10,7 @@ const Chat = () => {
   const [chatLog, setChatLog] = useState<ChatLog>([initialPrompt]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
   const chatRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,7 +28,7 @@ const Chat = () => {
   };
 
   const sendMessage = async () => {
-    const url = "/api/chatgpt";
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/chatgpt`;
 
     setIsLoading(true);
     const res = await axios.post(url, chatLog);
@@ -55,6 +56,7 @@ const Chat = () => {
   }, [chatLog]);
 
   useEffect(() => {
+    // Makes sure the input field is focused on page load
     inputRef.current?.focus();
   }, []);
 
