@@ -71,7 +71,7 @@ const Chat = () => {
           <ChatBubble key={id} role={chat.role} message={chat.content} />
         ))}
         {isLoading && (
-          <div className="flex items-center gap-2 my-2">
+          <div className="flex items-center gap-2 mx-1 my-2 md:mx-0">
             <AiOutlineRobot className="p-2.5 rounded-full w-12 h-12 bg-base-300" />
             <TypingAnimation />
           </div>
