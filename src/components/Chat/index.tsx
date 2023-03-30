@@ -65,7 +65,7 @@ const Chat = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-104px)]">
+    <div className="flex flex-col h-[calc(100dvh-104px)]">
       <div className="flex-1 overflow-y-scroll">
         {chatLog.map((chat, id) => (
           <ChatBubble key={id} role={chat.role} message={chat.content} />
