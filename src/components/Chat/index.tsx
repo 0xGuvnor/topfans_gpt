@@ -31,13 +31,17 @@ const Chat = () => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/chatgpt`;
 
     setIsLoading(true);
-    const res = await axios.post(url, chatLog);
-    setIsLoading(false);
+    try {
+      const res = await axios.post(url, chatLog);
 
-    setChatLog((prev) => [
-      ...prev,
-      { role: "assistant", content: res.data.reply.content },
-    ]);
+      setChatLog((prev) => [
+        ...prev,
+        { role: "assistant", content: res.data.reply.content },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
