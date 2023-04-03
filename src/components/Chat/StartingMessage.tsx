@@ -1,7 +1,7 @@
 const StartingMessage = () => {
   return (
     <div className="flex justify-center">
-      <p className="text-2xl text-center whitespace-pre-line opacity-50">
+      <p className="px-4 text-lg text-center whitespace-pre-line opacity-50 md:px-0 md:text-2xl">
         {`Welcome! 
     
 TopFans-GPT is a music trivia game. 
