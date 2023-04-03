@@ -5,7 +5,7 @@ import { ChatLog } from "../../../typings";
 import ChatBubble from "./ChatBubble";
 import TypingAnimation from "./TypingAnimation";
 import StartingMessage from "./StartingMessage";
-import { RiSendPlaneFill } from "react-icons/ri";
+import { BsFillSendFill } from "react-icons/bs";
 
 const Chat = () => {
   const [chatLog, setChatLog] = useState<ChatLog>([initialPrompt]);
@@ -89,10 +89,10 @@ const Chat = () => {
           className="flex-1 text-lg bg-transparent placeholder:text-neutral-content/50 focus:outline-none"
         />
         <button type="submit">
-          <RiSendPlaneFill
+          <BsFillSendFill
             onClick={() => inputRef.current?.focus()}
-            className={`${
-              message && "cursor-pointer opacity-100 hover:bg-neutral-focus"
+            className={`${message && "opacity-100 hover:bg-neutral-focus"} ${
+              message ? "cursor-pointer" : "cursor-default"
             } opacity-25 w-10 h-10 rounded-lg p-1.5`}
           />
         </button>
