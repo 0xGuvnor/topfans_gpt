@@ -1,10 +1,11 @@
 import { initialPrompt } from "@/constants";
 import axios from "axios";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { AiOutlineRobot } from "react-icons/ai";
 import { ChatLog } from "../../../typings";
 import ChatBubble from "./ChatBubble";
 import TypingAnimation from "./TypingAnimation";
+import StartingMessage from "./StartingMessage";
+import { RiSendPlaneFill } from "react-icons/ri";
 
 const Chat = () => {
   const [chatLog, setChatLog] = useState<ChatLog>([initialPrompt]);
@@ -66,37 +67,34 @@ const Chat = () => {
 
   return (
     <div className="flex flex-col h-[calc(100dvh-104px)]">
-      <div className="flex-1 overflow-y-scroll">
+      <main className="flex-1 overflow-y-scroll">
         {chatLog.map((chat, id) => (
           <ChatBubble key={id} role={chat.role} message={chat.content} />
         ))}
-        {isLoading && (
-          <div className="flex items-center gap-2 mx-1 my-2 md:mx-0">
-            <AiOutlineRobot className="p-2.5 rounded-full w-12 h-12 bg-base-300" />
-            <TypingAnimation />
-          </div>
-        )}
+        {isLoading && <TypingAnimation />}
+        {chatLog.length === 1 && <StartingMessage />}
         <div ref={chatRef}></div>
-      </div>
+      </main>
 
       <form
         onSubmit={handleSubmit}
-        className="flex m-3 space-x-3 md:my-6 md:mx-0"
+        className="flex items-center px-6 py-2 m-3 rounded-xl bg-neutral text-neutral-content md:my-6 md:mx-0"
       >
         <input
           ref={inputRef}
           type="text"
-          placeholder="Write a message..."
+          placeholder="Send a message..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="flex-1 px-6 py-2 text-lg rounded-full bg-neutral text-neutral-content focus:outline-none"
+          className="flex-1 text-lg bg-transparent focus:outline-none"
         />
-        <button
-          type="submit"
-          onClick={() => inputRef.current?.focus()}
-          className="text-lg btn btn-primary"
-        >
-          Send
+        <button type="submit">
+          <RiSendPlaneFill
+            onClick={() => inputRef.current?.focus()}
+            className={`${
+              message && "cursor-pointer opacity-100 hover:bg-neutral-focus"
+            } opacity-25 w-10 h-10 rounded-lg p-1.5`}
+          />
         </button>
       </form>
     </div>
