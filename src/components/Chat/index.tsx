@@ -86,7 +86,7 @@ const Chat = () => {
           placeholder="Send a message..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="flex-1 text-lg bg-transparent focus:outline-none"
+          className="flex-1 text-lg bg-transparent placeholder:text-neutral-content/50 focus:outline-none"
         />
         <button type="submit">
           <RiSendPlaneFill
